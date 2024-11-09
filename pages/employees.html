@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kepegawaian - SIAP</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .employee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .employee-table th, .employee-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .employee-table th {
+            background-color: #0073e6;
+            color: #fff;
+        }
+
+        .employee-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .add-employee-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .add-employee-btn:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <div class="content">
+        <h1>Kepegawaian</h1>
+        <div class="filter-section">
+            <label for="department-filter">Filter berdasarkan Departemen:</label>
+            <select id="department-filter">
+                <option value="all">Semua</option>
+                <option value="IT">IT</option>
+                <option value="HR">HR</option>
+                <option value="Finance">Finance</option>
+            </select>
+        </div>
+        <a href="add-employee.html" class="add-employee-btn"><i class="fas fa-user-plus"></i> Tambah Karyawan</a>
+        <table class="employee-table" id="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Karyawan</th>
+                    <th>Departemen</th>
+                    <th>Jabatan</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-department="IT">
+                    <td>001</td>
+                    <td>John Doe</td>
+                    <td>IT</td>
+                    <td>Manager</td>
+                    <td>Aktif</td>
+                </tr>
+                <tr data-department="HR">
+                    <td>002</td>
+                    <td>Jane Smith</td>
+                    <td>HR</td>
+                    <td>Staff</td>
+                    <td>Aktif</td>
+                </tr>
+                <tr data-department="Finance">
+                    <td>003</td>
+                    <td>Ahmad Rasyid</td>
+                    <td>Finance</td>
+                    <td>Supervisor</td>
+                    <td>Cuti</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Muat sidebar dari folder components
+        fetch('../components/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Gagal memuat sidebar:', error));
+
+        // Filter dropdown event listener
+        document.getElementById('department-filter').addEventListener('change', function() {
+            const filterValue = this.value;
+            const rows = document.querySelectorAll('#employee-table tbody tr');
+
+            rows.forEach(row => {
+                const department = row.getAttribute('data-department');
+                if (filterValue === 'all' || department === filterValue) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

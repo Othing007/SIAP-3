@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Menyurat - SIAP</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .add-letter-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .add-letter-btn:hover {
+            background-color: #005bb5;
+        }
+
+        .letter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .letter-table th, .letter-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .letter-table th {
+            background-color: #0073e6;
+            color: #fff;
+        }
+
+        .letter-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <div class="content">
+        <h1>Surat Menyurat</h1>
+        <a href="add-correspondence.html" class="add-letter-btn"><i class="fas fa-plus"></i> Tambah Surat Baru</a>
+        
+        <h2>Surat Masuk</h2>
+        <table class="letter-table">
+            <thead>
+                <tr>
+                    <th>ID Surat</th>
+                    <th>Pengirim</th>
+                    <th>Tanggal</th>
+                    <th>Perihal</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>PT. ABC</td>
+                    <td>10 Maret 2024</td>
+                    <td>Undangan Seminar</td>
+                    <td>Diterima</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Kementerian Pendidikan</td>
+                    <td>12 Maret 2024</td>
+                    <td>Permintaan Laporan</td>
+                    <td>Diproses</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Surat Keluar</h2>
+        <table class="letter-table">
+            <thead>
+                <tr>
+                    <th>ID Surat</th>
+                    <th>Penerima</th>
+                    <th>Tanggal</th>
+                    <th>Perihal</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>101</td>
+                    <td>PT. DEF</td>
+                    <td>11 Maret 2024</td>
+                    <td>Balasan Kerjasama</td>
+                    <td>Terkirim</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Universitas XYZ</td>
+                    <td>14 Maret 2024</td>
+                    <td>Undangan Pembicara</td>
+                    <td>Diproses</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Muat file sidebar.html ke dalam elemen #sidebar-container
+        fetch('/components/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Gagal memuat sidebar:', error));
+    </script>
+</body>
+</html>

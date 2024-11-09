@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman - SIAP</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .add-announcement-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .add-announcement-btn:hover {
+            background-color: #005bb5;
+        }
+
+        .announcement-list {
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .announcement-list li {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-list h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #0073e6;
+        }
+
+        .announcement-list p {
+            margin: 5px 0 0;
+            color: #555;
+        }
+
+        .announcement-list .date {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <div class="content">
+        <h1>Pengumuman</h1>
+        <a href="add-announcement.html" class="add-announcement-btn"><i class="fas fa-plus"></i> Tambah Pengumuman Baru</a>
+        
+        <ul class="announcement-list">
+            <li>
+                <h3>Rapat Bulanan</h3>
+                <p>Rapat bulanan akan diadakan pada 20 Maret 2024 pukul 10.00 WIB di ruang rapat utama.</p>
+                <div class="date">Diumumkan pada: 15 Maret 2024</div>
+            </li>
+            <li>
+                <h3>Cuti Bersama</h3>
+                <p>Cuti bersama dalam rangka libur nasional akan dimulai pada 1 April 2024.</p>
+                <div class="date">Diumumkan pada: 10 Maret 2024</div>
+            </li>
+            <li>
+                <h3>Update Sistem</h3>
+                <p>Pemeliharaan sistem akan dilakukan pada 22 Maret 2024 pukul 22.00 WIB. Mohon simpan data penting Anda sebelum waktu tersebut.</p>
+                <div class="date">Diumumkan pada: 14 Maret 2024</div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Memuat sidebar dari folder components
+        fetch('../components/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Gagal memuat sidebar:', error));
+    </script>
+</body>
+</html>
