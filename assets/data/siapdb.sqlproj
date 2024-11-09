@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.SQLServer.SqlProject.Sdk/1.0.0">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>SIAPDB</RootNamespace>
+    <DefaultDatabaseName>SIAP</DefaultDatabaseName>
+    <SqlProjectType>Database</SqlProjectType>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AssemblyName>SIAPDB</AssemblyName>
+    <TargetPlatformVersion>SqlServer2019</TargetPlatformVersion>
+    <TargetPlatform>SqlServer</TargetPlatform>
+    <PublishProfile>DatabasePublishProfile.pubxml</PublishProfile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SqlScript Include="Scripts\CreateTables.sql" />
+    <SqlScript Include="Scripts\StoredProcedures.sql" />
+    <SqlScript Include="Scripts\InsertData.sql" />
+    <SqlScript Include="Scripts\Views.sql" />
+    <SqlScript Include="Scripts\Functions.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dependencies\SomeDependency.sqlproj" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SQL\Microsoft.VisualStudio.SQL.Sdk.targets" />
+</Project>
